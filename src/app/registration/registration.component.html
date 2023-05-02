@@ -9,18 +9,22 @@
             </div>
             <div class="col-right">
                 <div class="login-form">
+                    <div *ngIf="messageText" [ngClass]="messageClass">
+                        {{messageText}}
+
+                    </div>
                     <h2>SignUp</h2>
-                    <form action="">
+                    <form action="" [formGroup]="regForm" (ngSubmit)="createAccount()">
                         <p> <label>Username<span>*</span></label> 
-                            <input type="text"placeholder="Username" required> 
+                            <input type="text"placeholder="Username" required formControlName="username"> 
                         </p> 
                         <p> <label>Email<span>*</span></label> 
-                            <input type="email"placeholder="email" required> 
+                            <input type="email"placeholder="email" required formControlName="email"> 
                         </p>
                         <p>
                              <label>Password<span>*</span></label> 
                              <input type="password" placeholder="Password"
-                                required> </p>
+                                required formControlName="password"> </p>
                         
                         <p> <input type="submit" value="SignUp"> </p>
                         <p> <a href="">Forgot password?</a> </p>

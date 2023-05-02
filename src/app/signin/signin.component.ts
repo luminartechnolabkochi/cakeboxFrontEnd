@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { CackeService } from '../service/cacke.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+
+  logForm=new FormGroup({
+    "username":new FormControl(),
+    "password":new FormControl()
+  })
+
+  constructor(private service:CackeService) { }
 
   ngOnInit(): void {
   }
+
+  authenticate(){
+    if(this.logForm.valid){
+      let formData=this.logForm.value
+      this.service.getToken(formData).subscribe((res:any)=>{ localStorage.setItem("token","Token "+res.token)})
+
+    }
+  }
+
+
+
 
 }

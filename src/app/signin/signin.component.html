@@ -10,14 +10,14 @@
             <div class="col-right">
                 <div class="login-form">
                     <h2>Login</h2>
-                    <form action="">
+                    <form action="" [formGroup]="logForm" (ngSubmit)="authenticate()">
                         <p> <label>Username/Email address<span>*</span></label> 
-                            <input type="text"placeholder="Username or Email" required> 
+                            <input type="text"placeholder="Username or Email" required formControlName="username"> 
                         </p>
                         <p>
                              <label>Password<span>*</span></label> 
                              <input type="password" placeholder="Password"
-                                required> </p>
+                                required formControlName="password"> </p>
                         <p> <input type="submit" value="Sign In"> </p>
                         <p> <a href="">Forgot password?</a> </p>
                     </form>
